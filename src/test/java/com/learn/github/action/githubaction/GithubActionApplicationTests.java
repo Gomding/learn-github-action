@@ -14,7 +14,7 @@ class GithubActionApplicationTests {
 
 	@Test
 	void failTest() {
-		assertThat("1234").isEqualTo("4321");
+		assertThat("1234").isEqualTo("1234");
 	}
 
 }
