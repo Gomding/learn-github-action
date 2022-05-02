@@ -11,7 +11,7 @@ jobs:
         if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_PR_MERGED }}
           SLACK_COLOR: good
           SLACK_USERNAME: 백엔드 PR 머지&배포 알림요정
           SLACK_TITLE: PR 머지&배포 알림
