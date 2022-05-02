@@ -4,7 +4,7 @@ on:
     types: [ opened , synchronize , reopened, closed ]
 
 env:
-  SLACK_WEBHOOK: https://hooks.slack.com/services/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
+  SLACK_WEBHOOK: https://hooks.slack.com/services/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
 
 jobs:
   notify-deploy:
