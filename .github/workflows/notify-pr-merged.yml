@@ -13,7 +13,6 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: test_slack_notify
-          SALCK_USERNAME: 배포알림요정
           SLACK_COLOR: good
           SLACK_TITLE: 배포 알림
           SLACK_MESSAGE: '${{ github.event.pull_request.title }} merged & deploy start!! :rocket:'
