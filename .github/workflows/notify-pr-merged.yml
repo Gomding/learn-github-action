@@ -16,6 +16,7 @@ jobs:
           SLACK_USERNAME: 배포알림요정
           SLACK_TITLE: 배포 알림
           SLACK_LINK_NAMES: true
+          SLACK_ICON: https://user-images.githubusercontent.com/57378410/166200192-55933fe9-3408-4cd7-9e61-bb97b7d14c66.jpg
           SLACK_MESSAGE: |
             @channel PR merged & deploy start!! :rocket:
             PR명 : ${{ github.event.pull_request.title }}
