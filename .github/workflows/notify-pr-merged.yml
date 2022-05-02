@@ -1,12 +1,28 @@
-name: Application-Test
+name: pr-merged-notify
 on:
   pull_request:
-    types: [ closed ]
+    types: [ opened , synchronize , reopened, closed ]
 
 jobs:
   notify-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: notify-merged-pr
-        if: github.event.pull_request.merged == 'true'
-        run: echo ${{ github.event.pull_request.title }}
+      - name: notify-slack
+        if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: good
+          SLACK_USERNAME: 백엔드 PR 머지&배포 알림요정
+          SLACK_TITLE: PR 머지&배포 알림
+          SLACK_LINK_NAMES: true
+          SLACK_ICON: https://user-images.githubusercontent.com/57378410/166200192-55933fe9-3408-4cd7-9e61-bb97b7d14c66.jpg
+          SLACK_MESSAGE: |
+            @channel PR 머지 & 배포 하겠습니다!! :rocket:
+            PR정보 : ${{ github.event.pull_request.title }}#{{github.event.pull_request.number}}
+            PR링크: (${{ github.event.pull_request.html_url }})
+      - name: notify-echo
+        run: |
+          echo ${{ github.event.pull_request.merged }}
+          echo ${{ github.event.pull_request.title }}
+          echo ${{ github.event.pull_request.base.ref }}
