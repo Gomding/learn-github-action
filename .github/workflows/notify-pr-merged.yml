@@ -1,4 +1,4 @@
-name: Application-Test
+name: pr-merged-notify
 on:
   pull_request:
     types: [ closed ]
@@ -7,6 +7,5 @@ jobs:
   notify-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: notify-merged-pr
-        if: github.event.pull_request.merged == 'true'
-        run: echo ${{ github.event.pull_request.title }}
+      - name: notify-echo
+        run: echo ${{ github.event.pull_request }}
