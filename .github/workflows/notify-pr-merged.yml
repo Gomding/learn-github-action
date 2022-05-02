@@ -3,12 +3,24 @@ on:
   pull_request:
     types: [ opened , synchronize , reopened, closed ]
 
+env:
+  SLACK_WEBHOOK: https://hooks.slack.com/services/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
+
 jobs:
   notify-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: notify-echo
+      - name: notify-slack
         if: github.event.pull_request.merged == true
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: test_slack_notify
+          SALCK_USERNAME: 배포알림요정
+          SLACK_COLOR: good
+          SLACK_TITLE: 배포 알림
+          SLACK_MESSAGE: '${{ github.event.pull_request.title }} merged & deploy start!! :rocket:'
+      - name: notify-echo
         run: |
           echo ${{ github.event.pull_request.merged }}
           echo ${{ github.event.pull_request.title }}
