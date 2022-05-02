@@ -13,13 +13,13 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: good
-          SLACK_USERNAME: PR 머지&배포 알림요정
+          SLACK_USERNAME: 백엔드 PR 머지&배포 알림요정
           SLACK_TITLE: PR 머지&배포 알림
           SLACK_LINK_NAMES: true
           SLACK_ICON: https://user-images.githubusercontent.com/57378410/166200192-55933fe9-3408-4cd7-9e61-bb97b7d14c66.jpg
           SLACK_MESSAGE: |
             @channel PR 머지 & 배포 하겠습니다!! :rocket:
-            PR명 : ${{ github.event.pull_request.title }}
+            PR정보 : ${{ github.event.pull_request.title }}#{{github.event.pull_request.number}}
             PR링크: (${{ github.event.pull_request.html_url }})
       - name: notify-echo
         run: |
