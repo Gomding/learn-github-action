@@ -14,7 +14,7 @@ jobs:
         if: github.event.pull_request.merged == true
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ env.SLACK_BOT_TOKEN }}
+          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
           SLACK_CHANNEL: test_slack_notify
           SALCK_USERNAME: 배포알림요정
           SLACK_COLOR: good
