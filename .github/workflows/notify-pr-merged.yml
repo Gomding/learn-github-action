@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: notify-slack
-        if: github.event.pull_request.merged == true
+        if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -25,3 +25,4 @@ jobs:
         run: |
           echo ${{ github.event.pull_request.merged }}
           echo ${{ github.event.pull_request.title }}
+          echo ${{ github.event.pull_request.base.ref }}
