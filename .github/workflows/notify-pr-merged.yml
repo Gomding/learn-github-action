@@ -15,7 +15,11 @@ jobs:
           SLACK_COLOR: good
           SLACK_USERNAME: 배포알림요정
           SLACK_TITLE: 배포 알림
-          SLACK_MESSAGE: '[${{ github.event.pull_request.title }}](${{ github.event.pull_request.html_url }}) merged & deploy start!! :rocket:'
+          SLACK_LINK_NAMES: true
+          SLACK_MESSAGE: |
+            @민영[BE/데이터드리븐TF] PR merged & deploy start!! :rocket:
+            PR명 : ${{ github.event.pull_request.title }}
+            PR링크: (${{ github.event.pull_request.html_url }})
       - name: notify-echo
         run: |
           echo ${{ github.event.pull_request.merged }}
