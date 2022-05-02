@@ -14,9 +14,8 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: good
           SLACK_USERNAME: 배포알림요정
-          SLACK_MSG_AUTHOR: $GITHUB_ACTOR
           SLACK_TITLE: 배포 알림
-          SLACK_MESSAGE: '${{ github.event.pull_request.title }} merged & deploy start!! :rocket:'
+          SLACK_MESSAGE: '[${{ github.event.pull_request.title }}](${{ github.event.pull_request.html_url }}) merged & deploy start!! :rocket:'
       - name: notify-echo
         run: |
           echo ${{ github.event.pull_request.merged }}
