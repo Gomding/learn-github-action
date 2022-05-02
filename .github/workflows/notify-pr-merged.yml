@@ -12,9 +12,8 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_CHANNEL: test_slack_notify
           SLACK_COLOR: good
-          SLACK_TITLE: 배포 알림
+          SLACK_TITLE: deploy
           SLACK_MESSAGE: '${{ github.event.pull_request.title }} merged & deploy start!! :rocket:'
       - name: notify-echo
         run: |
