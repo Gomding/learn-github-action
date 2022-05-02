@@ -20,6 +20,7 @@ jobs:
           SLACK_COLOR: good
           SLACK_TITLE: 배포 알림
           SLACK_MESSAGE: '${{ github.event.pull_request.title }} merged & deploy start!! :rocket:'
+      - name: notify-echo
         run: |
           echo ${{ github.event.pull_request.merged }}
           echo ${{ github.event.pull_request.title }}
